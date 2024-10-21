@@ -4,7 +4,7 @@
 #
 
 app = "bun-htmx-2"
-primary_region = "gru"
+primary_region = "fra"
 
 [build]
 

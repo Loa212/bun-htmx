@@ -26,6 +26,9 @@ RUN rm -rf tailwind.config.js \
     && rm -rf bun.lockb \
     && rm -rf node_modules
 
+# Ensure the database file is not removed
+VOLUME ["/app/mydatabase.db"]
+
 # Run
 ENV HOSTNAME="0.0.0.0"
 ENV PORT=3000
