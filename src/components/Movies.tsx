@@ -8,12 +8,17 @@ export async function Movies() {
       <h2 className="uppercase text-xl">
         <strong>Movies</strong>
       </h2>
-      <div className="grid grid-cols-1 gap-4 mt-4">
+      <div className="grid grid-cols-2 gap-4 mt-4">
         {movies.map((movie) => (
-          <div key={movie.id} className="card">
+          <div key={movie.id} className="card bg-base-100 w-full shadow-xl">
             <div className="card-body">
               <h2 className="card-title">{movie.title}</h2>
-              <p className="text-base-content/80">{movie.releaseYear}</p>
+              <p className="text-start">
+                <i>{movie.releaseYear}</i>
+              </p>
+              <div className="card-actions justify-end">
+                <button className="btn btn-primary">More info</button>
+              </div>
             </div>
           </div>
         ))}
