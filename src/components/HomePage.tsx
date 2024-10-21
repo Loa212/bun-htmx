@@ -48,6 +48,16 @@ export function HomePage() {
             </em>
           </p>
         </section>
+
+        <div
+          hx-trigger="load"
+          hx-get="/movies"
+          hx-swap="innerHTML"
+          className="flex items-center justify-center"
+        >
+          <Loading />
+        </div>
+
         {/* The delay is to show the loading indicator, otherwise it would probably render to fast to notice */}
         <div
           hx-trigger="load delay:2s"

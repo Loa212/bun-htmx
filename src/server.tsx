@@ -1,6 +1,7 @@
 import { AboutPage } from "./components/AboutPage";
 import { CurrentTime } from "./components/CurrentTime";
 import { HomePage } from "./components/HomePage";
+import { Movies } from "./components/Movies";
 import { html, serve_static } from "./response";
 
 // Configuration
@@ -15,7 +16,7 @@ export function start() {
     port,
     hostname,
     development,
-    fetch(req, ser) {
+    async fetch(req, ser) {
       if (ser.upgrade(req)) return;
 
       console.log(`[request]: ${req.method}: ${req.url}`);
@@ -26,6 +27,7 @@ export function start() {
       if (url.pathname === "/") return html(<HomePage />);
       if (url.pathname === "/about") return html(<AboutPage />);
       if (url.pathname === "/time") return html(<CurrentTime />);
+      if (url.pathname === "/movies") return html(await Movies());
 
       // Fallback to serving static files
       return serve_static("public", req);
