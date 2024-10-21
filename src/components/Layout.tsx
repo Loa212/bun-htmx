@@ -1,4 +1,6 @@
 import { ReactNode } from "react";
+import { User } from "./User";
+import { Loading } from "./Loading";
 
 export function Layout({
   title,
@@ -25,9 +27,15 @@ export function Layout({
         <main className="max-w-screen-md mx-auto flex flex-col gap-8">
           <div className="w-full max-w-screen-md mx-auto">
             <header className="w-full flex items-center p-8" hx-boost="true">
+              <div
+                hx-trigger="load"
+                hx-get="/api/auth/session"
+                hx-swap="outerHTML"
+              />
+
               <h1>
-                <a href="/" className="btn btn-secondary btn-outline">
-                  Hello Bun!
+                <a href="/" className="btn btn-outline">
+                  Home
                 </a>
               </h1>
               <nav className="ml-auto">
