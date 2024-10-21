@@ -19,6 +19,7 @@ export function Layout({
         <meta charSet="utf-8" />
         <link rel="stylesheet" href="/style.css" />
         <script src="/htmx.js" defer></script>
+        <script src="/ws.js" defer></script>
       </head>
       <body className="h-full">
         <main className="max-w-screen-md mx-auto flex flex-col gap-8">

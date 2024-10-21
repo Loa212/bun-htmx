@@ -6,14 +6,18 @@ import { html, serve_static } from "./response";
 // Configuration
 const port = process.env?.PORT ? Number(process.env.PORT) : 3000;
 const development = process.env?.NODE_ENV === "development";
-const hostname = development ? "localhost" : process.env?.HOSTNAME ?? "localhost";
+const hostname = development
+  ? "localhost"
+  : process.env?.HOSTNAME ?? "localhost";
 
 export function start() {
   const server = Bun.serve({
     port,
     hostname,
     development,
-    fetch(req) {
+    fetch(req, ser) {
+      if (ser.upgrade(req)) return;
+
       console.log(`[request]: ${req.method}: ${req.url}`);
 
       const url = new URL(req.url);
@@ -25,6 +29,12 @@ export function start() {
 
       // Fallback to serving static files
       return serve_static("public", req);
+    },
+    websocket: {
+      message() {},
+      open() {},
+      close() {},
+      drain() {},
     },
   });
 
