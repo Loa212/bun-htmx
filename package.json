@@ -14,12 +14,16 @@
     "dev": "concurrently \"bun run dev:postcss\" \"bun run dev:server\"",
     "dev:postcss": "bun run build:postcss -- --watch",
     "dev:server": "bun run --watch src/index.tsx",
-    "start": "bun run build/index.js"
+    "start": "bun run build/index.js",
+    "db:gen": "bunx drizzle-kit generate --dialect sqlite --schema ./src/db/schema.ts",
+    "db:migrate": "bun run ./src/db/migrate.ts",
+    "db:seed": "bun run ./src/db/seed.ts"
   },
   "dependencies": {
     "bun-types": "latest",
     "concurrently": "^8.2.2",
     "daisyui": "^3.7.3",
+    "drizzle-orm": "^0.35.2",
     "hono": "^3.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -31,6 +35,7 @@
     "@types/react-dom": "^18.2.7",
     "autoprefixer": "^10.4.16",
     "cssnano": "^6.0.1",
+    "drizzle-kit": "^0.26.2",
     "postcss": "^8.4.31",
     "postcss-cli": "^10.1.0",
     "postcss-import": "^15.1.0"
